@@ -6,58 +6,119 @@ import seaborn as sns
 st.set_page_config(page_title="Flight Delay Dashboard", layout="wide")
 
 # Load data
-df = pd.read_csv("data/flights_cleaned_m1.csv")
+@st.cache_data
+def load_data():
+    return pd.read_csv("./data/flights_cleaned_m1.csv")
 
-st.title("✈️ Flight Delay Analysis Dashboard")
+df = load_data()
 
-# Sidebar Navigation
-menu = st.sidebar.radio(
-    "Navigation",
-    ["Overview", "Airline Analysis", "Delay Analysis", "Temporal Trends"]
+st.title("✈️ Flight Delay Analytics Dashboard")
+
+# SIDEBAR FILTERS
+st.sidebar.header("Filters")
+
+selected_airline = st.sidebar.selectbox(
+    "Select Airline",
+    ["All"] + sorted(df['name'].dropna().unique().tolist())
 )
 
-# OVERVIEW
+selected_month = st.sidebar.selectbox(
+    "Select Month",
+    ["All"] + sorted(df['month_name'].dropna().unique().tolist())
+)
 
-if menu == "Overview":
-    st.subheader("Dataset Overview")
-    st.write("Shape of Dataset:", df.shape)
-    st.dataframe(df.head())
+filtered_df = df.copy()
 
-# AIRLINE ANALYSIS
+if selected_airline != "All":
+    filtered_df = filtered_df[filtered_df['name'] == selected_airline]
 
-elif menu == "Airline Analysis":
+if selected_month != "All":
+    filtered_df = filtered_df[filtered_df['month_name'] == selected_month]
+
+# KPI METRICS
+st.subheader("Key Metrics")
+
+col1, col2, col3, col4 = st.columns(4)
+
+col1.metric("Total Flights", len(filtered_df))
+col2.metric("Average Arrival Delay", round(filtered_df['arr_delay'].mean(),2))
+col3.metric("Cancelled Flights", filtered_df['is_cancelled'].sum())
+col4.metric("Delayed Flights", filtered_df['is_delayed'].sum())
+
+st.divider()
+
+# TOP AIRLINES
+col1, col2 = st.columns(2)
+
+with col1:
     st.subheader("Top Airlines by Flight Volume")
 
-    top_airlines = df['name'].value_counts().head(10)
+    top_airlines = filtered_df['name'].value_counts().head(10)
 
     fig, ax = plt.subplots()
-    top_airlines.sort_values().plot(kind='barh', ax=ax)
-    ax.set_xlabel("Number of Flights")
+    sns.barplot(x=top_airlines.values, y=top_airlines.index, ax=ax)
+
+    ax.set_xlabel("Flights")
+    ax.set_ylabel("Airline")
+
     st.pyplot(fig)
 
+# DELAY BY AIRLINE
+with col2:
+    st.subheader("Average Delay by Airline")
 
-# DELAY ANALYSIS
-
-elif menu == "Delay Analysis":
-    st.subheader("Average Arrival Delay by Airline")
-
-    delay_by_airline = df.groupby('name')['arr_delay'].mean().sort_values()
+    delay_airline = filtered_df.groupby('name')['arr_delay'].mean().sort_values()
 
     fig, ax = plt.subplots()
-    delay_by_airline.plot(kind='barh', ax=ax)
+    sns.barplot(x=delay_airline.values, y=delay_airline.index, ax=ax)
+
     ax.set_xlabel("Average Delay (Minutes)")
+
     st.pyplot(fig)
 
+st.divider()
 
-# TEMPORAL ANALYSIS
+# TEMPORAL TRENDS
+col1, col2 = st.columns(2)
 
-elif menu == "Temporal Trends":
+with col1:
     st.subheader("Average Delay by Hour")
 
-    hour_delay = df.groupby('hour')['arr_delay'].mean()
+    hour_delay = filtered_df.groupby('hour')['arr_delay'].mean()
 
     fig, ax = plt.subplots()
-    hour_delay.plot(kind='line', ax=ax)
-    ax.set_xlabel("Hour")
+    sns.lineplot(x=hour_delay.index, y=hour_delay.values, ax=ax)
+
+    ax.set_xlabel("Hour of Day")
     ax.set_ylabel("Average Delay")
+
     st.pyplot(fig)
+
+with col2:
+    st.subheader("Monthly Delay Trend")
+
+    monthly_delay = filtered_df.groupby('month')['arr_delay'].mean()
+
+    fig, ax = plt.subplots()
+    sns.lineplot(x=monthly_delay.index, y=monthly_delay.values, ax=ax)
+
+    ax.set_xlabel("Month")
+    ax.set_ylabel("Average Delay")
+
+    st.pyplot(fig)
+
+st.divider()
+
+# ROUTE ANALYSIS
+st.subheader("Top Routes by Flights")
+
+top_routes = filtered_df['route'].value_counts().head(10)
+
+fig, ax = plt.subplots()
+
+sns.barplot(x=top_routes.values, y=top_routes.index, ax=ax)
+
+ax.set_xlabel("Number of Flights")
+ax.set_ylabel("Route")
+
+st.pyplot(fig)
