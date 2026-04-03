@@ -1,0 +1,153 @@
+1. PROJECT DOCUMENTATION
+
+
+1.1 Project Title
+
+AirFly Smart Delay Prediction System
+
+
+1.2 Introduction
+
+The AirFly Smart Delay Prediction System is a data-driven application designed to analyze historical airline data and predict flight delays using machine learning. It provides insights into delay patterns and helps users make better travel decisions.
+
+
+1.3 Objectives
+
+Analyze historical flight delay data
+
+Identify major causes of delays
+
+Build predictive models for delay classification
+
+Provide interactive visualizations using Streamlit
+
+
+1.4 Scope
+
+The system focuses on:
+
+Flight delay analysis
+
+Machine learning prediction
+
+Interactive dashboard visualization
+
+
+Limitations:
+
+Uses historical dataset only
+
+No real-time API integration
+
+
+1.5 Technology Stack
+
+
+Frontend: Streamlit
+
+Backend: Python
+
+Libraries: Pandas, NumPy, Matplotlib, Seaborn
+
+Machine Learning: Scikit-learn
+
+Models: Logistic Regression, Random Forest
+
+
+1.6 System Architecture
+
+
+Data Collection (CSV dataset)
+
+Data Preprocessing
+
+Feature Engineering
+
+Model Training
+
+Dashboard Visualization
+
+Prediction System
+
+
+1.7 Modules Description
+
+
+🔐 Authentication Module
+
+Simple signup/login using session state
+
+📊 Dashboard Module
+
+Visualizes delay patterns
+
+Shows charts and insights
+
+🤖 Model Module
+
+Trains ML models
+
+Compares accuracy
+
+🔮 Prediction Module
+
+Takes user input
+
+Predicts delay probability
+
+💬 Feedback Module
+
+Collects user feedback
+
+1.8 Dataset Description
+
+
+Departure Date
+
+Arrival Delay
+
+Weather Delay
+
+NAS Delay
+
+Carrier Delay
+
+Airport Name
+
+Arrival Airport
+
+
+1.9 Methodology
+
+Data Cleaning
+
+Feature Selection
+
+Train-Test Split
+
+Model Training
+
+Evaluation using accuracy & confusion matrix
+
+
+1.10 Results
+
+Random Forest performed better than Logistic Regression
+
+Key delay factors: Carrier Delay, NAS Delay
+
+Dashboard provides clear insights
+
+
+1.11 Conclusion
+
+The system successfully predicts flight delays and provides useful insights. It helps users understand delay patterns and supports data-driven decision-making.
+
+
+1.12 Future Enhancements
+
+Real-time flight tracking
+
+Advanced ML models (XGBoost, Deep Learning)
+
+Mobile-friendly UI

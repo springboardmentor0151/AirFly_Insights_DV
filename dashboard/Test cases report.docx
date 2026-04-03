@@ -1,0 +1,85 @@
+1. TEST CASES REPORT
+
+1.1 Overview
+
+This document validates the functionality of the AirFly system through different test cases.
+
+
+1.2 Test Cases Table
+
+✅ Test Case 1: User Signup
+
+Input: Username, Password
+
+Expected Output: User logged in successfully
+
+Result: Pass
+
+✅ Test Case 2: Empty Signup Fields
+
+Input: Empty username/password
+
+Expected Output: Warning message
+
+Result: Pass
+
+✅ Test Case 3: Dashboard Loading
+
+Input: Valid login
+
+Expected Output: Dashboard loads with charts
+
+Result: Pass
+
+✅ Test Case 4: Data Display
+
+Input: Click "View Sample Data"
+
+Expected Output: Dataset preview shown
+
+Result: Pass
+
+✅ Test Case 5: Model Training
+
+Input: Navigate to Model page
+
+Expected Output: Models train successfully
+
+Result: Pass
+
+✅ Test Case 6: Prediction Function
+
+Input: User inputs flight details
+
+Expected Output: Delay prediction displayed
+
+Result: Pass
+
+✅ Test Case 7: Invalid Input Handling
+
+Input: Missing values
+
+Expected Output: Warning message
+
+Result: Pass
+
+✅ Test Case 8: Feedback Submission
+
+Input: Username + Feedback
+
+Expected Output: Success message
+
+Result: 
+
+✅ Test Case 9: Logout Function
+
+Input: Click logout
+
+Expected Output: Return to signup page
+
+Result: Pass
+
+
+1.3 Summary
+
+All modules are tested successfully. The system is stable, user-friendly, and performs as expected.
