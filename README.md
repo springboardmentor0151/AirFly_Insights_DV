@@ -67,7 +67,7 @@ The **AirFly Insights Dash Dashboard** is the final, product-grade version of th
 ```bash
 python dashboard.py
 ```
-Open **http://127.0.0.1:8050** in your browser.
+Open **https://airfly-insights.onrender.com/** in your browser.
 
 ### Dependencies:
 ```bash
