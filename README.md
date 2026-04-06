@@ -4,7 +4,7 @@ AirFly Insights is an end-to-end data science project and interactive dashboard 
 
 ---
 
-## 🏁 Project Milestones
+## Project Milestones
 
 ### Milestone 1: Data Exploration (Week 1)
 - Conducted initial exploratory data analysis (EDA) to understand the dataset structure.
@@ -30,7 +30,7 @@ AirFly Insights is an end-to-end data science project and interactive dashboard 
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 - **`dashboard.py`**: The primary **Plotly Dash** application (Milestone 4). Features 5 focused pages, native interactive Plotly charts, and the Smart Flight Planner.
 - **`app.py`**: The original Streamlit application (Milestone 3). Retained as reference — 7 pages of exploratory analysis.
@@ -44,7 +44,7 @@ AirFly Insights is an end-to-end data science project and interactive dashboard 
 
 ---
 
-## 🚀 Plotly Dash Dashboard (Milestone 4 — Primary)
+## Plotly Dash Dashboard (Milestone 4 — Primary)
 
 The **AirFly Insights Dash Dashboard** is the final, product-grade version of the application built for the Milestone 4 presentation.
 
@@ -76,7 +76,7 @@ pip install dash dash-bootstrap-components pandas numpy plotly
 
 ---
 
-## 📊 Streamlit Application (Milestone 3 — Reference)
+## Streamlit Application (Milestone 3 — Reference)
 
 The original Streamlit app is retained as a reference implementation.
 
@@ -87,7 +87,7 @@ streamlit run app.py
 
 ---
 
-## 🔑 Key Findings
+## Key Findings
 
 | Finding | Detail |
 |---|---|
@@ -101,4 +101,3 @@ streamlit run app.py
 | Safest season to fly | Spring (April–May) |
 
 ---
-*Developed as part of the AirFly Insights Milestone 4 — Infosys Springboard.*
